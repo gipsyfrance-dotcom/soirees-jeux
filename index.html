@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soirées jeux – Noisy &amp; alentours</title>
+<meta name="description" content="Les prochaines soirées jeux autour de Noisy-sur-École : choisis une soirée et inscris-toi en 2 minutes.">
+<meta name="theme-color" content="#1D3B5C">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gipsyfrance-dotcom.github.io/soirees-jeux/">
+<meta property="og:title" content="Soirées jeux – Noisy &amp; alentours">
+<meta property="og:description" content="Choisis une soirée et inscris-toi en 2 minutes. Pas besoin de compte.">
+<meta property="og:image" content="https://gipsyfrance-dotcom.github.io/soirees-jeux/apercu.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%B2%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#FBF4E6;font-family:'Nunito Sans',system-ui,sans-serif;color:#1D3B5C;font-size:16px}
+  .wrap{max-width:560px;margin:0 auto}
+  header{background:#1D3B5C;color:#FBF4E6;padding:22px 20px 20px}
+  header .kick{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F2B84B}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0}
+  header h1{font-size:30px;line-height:1.1;margin-top:6px}
+  header p{margin:8px 0 0;color:#E7DCC8;line-height:1.45}
+  main{padding:18px 16px 40px;display:flex;flex-direction:column;gap:16px}
+  .card{background:#fff;border:1px solid #E6D7BD;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .theme{background:#E4EFEE;color:#22524F;font-weight:800;font-size:14px;padding:5px 12px;border-radius:999px}
+  .places{font-weight:800;font-size:15px;color:#22524F}
+  .places.full{color:#9A3B26}
+  .date{font-family:Fraunces,Georgia,serif;font-size:22px;font-weight:700}
+  .info{display:flex;flex-direction:column;gap:4px;color:#3A4F66}
+  .pill{font-size:13px;font-weight:700;padding:4px 10px;border-radius:8px;background:#F6EEE0;color:#6B4A2B}
+  .badge{font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
+  .b-pub{background:#E6F4EA;color:#1E6B34}.b-val{background:#FEF7E0;color:#7A5A00}.b-masq{background:#F1F3F4;color:#5F6368}.b-annul{background:#FCE8E6;color:#8C1D18}
+  .btn{display:block;width:100%;text-align:center;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:17px;padding:14px;border-radius:12px;background:#2E6B67;color:#fff;text-decoration:none}
+  .btn.out{background:#fff;color:#1D3B5C;border:2px solid #1D3B5C;padding:12px}
+  .btn.danger{background:#fff;color:#9A3B26;border:2px solid #9A3B26;padding:10px;font-size:15px}
+  .btn.sm{font-size:14px;padding:9px 12px;border-radius:10px;width:auto;display:inline-block}
+  .btn.wa{background:#1F8F4E}
+  .btn:disabled{opacity:.6;cursor:wait}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .link{background:none;border:0;color:#2E6B67;font-family:inherit;font-weight:700;font-size:16px;cursor:pointer;padding:8px 0;text-align:left}
+  .center{text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .box{background:#FBF4E6;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:2px}
+  .box span:first-child{font-size:13px;color:#5B6B7D;font-weight:700}
+  .box span:last-child{font-weight:800}
+  .note{background:#EEF3F2;border-radius:12px;padding:12px;font-size:14px;line-height:1.45;color:#22524F}
+  .addr{background:#FFF6DF;border:2px solid #F2B84B;border-radius:12px;padding:12px;font-weight:700;line-height:1.45}
+  label{font-size:15px;font-weight:800}
+  input,select,textarea{font-family:inherit;font-size:17px;padding:12px 13px;border:2px solid #CBB99A;border-radius:10px;background:#fff;color:#1D3B5C;width:100%}
+  input:disabled,select:disabled,textarea:disabled{background:#F1F3F4;color:#80868B}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .checks{display:flex;flex-direction:column;gap:8px}
+  .check{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px}
+  .check input{width:22px;height:22px;flex:none}
+  .hint{font-size:13px;color:#5B6B7D}
+  .err{background:#FCE8E6;color:#8C1D18;border-radius:10px;padding:10px 12px;font-weight:700;font-size:15px}
+  .ok{background:#E6F4EA;color:#1E6B34;border-radius:10px;padding:10px 12px;font-weight:700;font-size:15px}
+  .icon{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;margin:0 auto}
+  .muted{color:#5B6B7D}
+  .load{padding:40px 0;text-align:center;color:#5B6B7D;font-weight:700}
+  .ins{border-top:1px solid #EFE5D3;padding-top:10px;display:flex;flex-direction:column;gap:6px}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  p{margin:0;line-height:1.5}
+  #toast{display:none;position:fixed;left:16px;right:16px;bottom:16px;max-width:528px;margin:0 auto;background:#1D3B5C;color:#fff;padding:14px 16px;border-radius:12px;font-weight:700;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kick">Noisy &amp; alentours</div>
+    <h1 id="titre">Les prochaines soirées jeux</h1>
+    <p id="sous">Choisis une soirée et inscris-toi en 2 minutes. Pas besoin de compte.</p>
+  </header>
+  <main id="app"><div class="load">Chargement…</div></main>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+/* ============ Outils ============ */
+var app=document.getElementById('app');
+var SOIREES=[],TOKEN=null,MOI=null,LISTES=null,MES=[],USERS=null;
+try{TOKEN=localStorage.getItem('sj_token');}catch(e){}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function erreur(e){return (e&&e.message?e.message:String(e)).replace(/^(Exception|Error):\s*/,'').replace(/^SESSION:\s*/,'');}
+function haut(){window.scrollTo(0,0);}
+function $(id){return document.getElementById(id);}
+function entete(t,s){$('titre').textContent=t;$('sous').textContent=s;}
+function horaires(s){return esc(s.debut)+(s.fin?' → vers '+esc(s.fin):'');}
+function themesHtml(s){return '<div class="tags">'+s.themes.map(function(t){return '<span class="theme">'+esc(t)+'</span>';}).join('')+'</div>';}
+function pillsHtml(l){return l&&l.length?'<div class="tags">'+l.map(function(r){return '<span class="pill">'+esc(r)+'</span>';}).join('')+'</div>':'';}
+function placesTxt(s){return s.restantes>0?s.restantes+(s.restantes>1?' places':' place')+' sur '+s.places:'Complet';}
+function plur(n,a,b){return n+' '+(n>1?b:a);}
+/* Appel serveur avec gestion d'erreur et de session */
+var API_URL='https://script.google.com/macros/s/AKfycbxz1fC1vYI1gRqH9w_s7OVs6kLtgfoMTrLsz8c_iq05Uciw7qzf9kAqlicUy4GJhYnQ0A/exec';
+var LECTURE={getSoirees:1,mesInscriptions:1,session:1,listes:1,mesSoirees:1,listeUtilisateurs:1};
+function run(fn,args,ok,ko,essai){
+  essai=essai||1;
+  var echec=function(m){
+    var e={message:String(m)};
+    if(e.message.indexOf('SESSION:')>=0){deco(true);toast(erreur(e));return;}
+    if(ko)ko(e);else toast(erreur(e));
+  };
+  /* credentials:'omit' : aucun cookie Google envoyé -> pas de conflit entre comptes */
+  fetch(API_URL,{method:'POST',credentials:'omit',redirect:'follow',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:fn,args:args||[]})})
+    .then(function(r){return r.text().then(function(t){
+      try{return JSON.parse(t);}catch(e){throw new Error('Réponse inattendue du serveur ('+r.status+') : '+t.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,140));}
+    });})
+    .then(function(res){
+      setTimeout(function(){if(res&&res.ok){if(ok)ok(res.data);}else echec(res&&res.error||'Erreur inconnue.');},0);
+    },function(e){
+      var m=e&&e.message||'';
+      /* Page d'erreur Google = le script ne s'est pas exécuté : on peut toujours réessayer.
+         Erreur réseau : on ne réessaie que les lectures (jamais une inscription). */
+      var horsScript=m.indexOf('Réponse inattendue')===0;
+      if((horsScript||LECTURE[fn])&&essai<4){setTimeout(function(){run(fn,args,ok,ko,essai+1);},1200*essai);return;}
+      echec(m.indexOf('Réponse inattendue')===0?m:'Connexion au serveur impossible. Vérifie ton réseau et réessaie.');
+    });
+}
+function toast(m){
+  var t=$('toast');t.textContent=m;t.style.display='block';
+  clearTimeout(toast._t);toast._t=setTimeout(function(){t.style.display='none';},6000);
+}
+/* Confirmation en deux clics (les fenêtres confirm() peuvent être bloquées dans Google Sites) */
+function deuxClics(btn,texte){
+  if(btn.dataset.ok==='1')return true;
+  btn.dataset.ok='1';btn.dataset.txt=btn.textContent;btn.textContent=texte;
+  setTimeout(function(){if(btn.dataset.ok==='1'){btn.dataset.ok='';btn.textContent=btn.dataset.txt;}},5000);
+  return false;
+}
+/* ---------- Navigation : le bouton « Précédent » reste dans la page ---------- */
+var ECRAN='',NAV=0,RESTAURE=false,REMPLACER=false;
+function marque(n,a){
+  ECRAN=n;NAV++;
+  if(RESTAURE)return;
+  var st={n:n,a:a||[]};
+  try{
+    var cur=history.state;
+    if(REMPLACER||(cur&&cur.n===n&&JSON.stringify(cur.a)===JSON.stringify(st.a)))history.replaceState(st,'');
+    else history.pushState(st,'');
+  }catch(e){}
+  REMPLACER=false;
+}
+window.addEventListener('popstate',function(ev){
+  var st=ev.state;RESTAURE=true;
+  try{
+    if(!st||st.n==='liste'||typeof window[st.n]!=='function'||(st.n==='detail'&&!SOIREES[st.a[0]]))accueil();
+    else window[st.n].apply(null,st.a);
+  }catch(e){accueil();}
+  finally{RESTAURE=false;}
+});
+function setTok(t){TOKEN=t;try{t?localStorage.setItem('sj_token',t):localStorage.removeItem('sj_token');}catch(e){}}
+
+/* ============ PARTIE PUBLIQUE ============ */
+var MAJ=false;
+function accueil(){
+  if(!SOIREES.length){try{var c=JSON.parse(localStorage.getItem('sj_soirees')||'null');if(c&&c.length)SOIREES=c;}catch(e){}}
+  if(SOIREES.length){MAJ=true;liste();}
+  else{entete('Les prochaines soirées jeux','Choisis une soirée et inscris-toi en 2 minutes. Pas besoin de compte.');
+    marque('liste');app.innerHTML='<div class="load">Chargement des soirées…<br><span class="hint">La première ouverture peut prendre quelques secondes.</span></div>';}
+  run('getSoirees',[],function(l){
+    var change=JSON.stringify(l)!==JSON.stringify(SOIREES);
+    SOIREES=l;MAJ=false;
+    try{localStorage.setItem('sj_soirees',JSON.stringify(l));}catch(e){}
+    if(ECRAN==='liste'){if(change||!$('maj'))liste();else{var z=$('maj');if(z)z.remove();}}
+  },function(e){
+    MAJ=false;var z=$('maj');if(z)z.remove();
+    if(ECRAN==='liste'&&!SOIREES.length)app.innerHTML='<div class="err">Impossible de charger les soirées : '+esc(erreur(e))+'</div><button class="btn out" onclick="accueil()">Réessayer</button>';
+  });
+}
+
+function liste(){
+  entete('Les prochaines soirées jeux','Choisis une soirée et inscris-toi en 2 minutes. Pas besoin de compte.');
+  marque('liste');
+  var h=MAJ?'<div id="maj" class="hint center">Mise à jour des places…</div>':'';
+  if(!SOIREES.length)h+='<div class="card center"><p><strong>Pas de soirée prévue pour l\'instant.</strong></p><p class="muted">Les prochaines dates seront annoncées dans la communauté WhatsApp.</p></div>';
+  SOIREES.forEach(function(s,i){
+    var full=s.restantes<=0||s.attente>0;
+    h+='<div class="card"><div class="row">'+themesHtml(s)+'<span class="places'+(full?' full':'')+'">'+(full?'Complet':placesTxt(s))+'</span></div>'
+      +'<div class="date">'+esc(s.date)+'</div>'
+      +'<div class="info"><div>'+horaires(s)+'</div><div>'+esc(s.village)+(s.hote?' · chez '+esc(s.hote):'')+'</div></div>'
+      +pillsHtml(s.regles)
+      +(full?'<button class="btn out" onclick="detail('+i+')">Liste d\'attente'+(s.attente?' ('+plur(s.attente,'personne','personnes')+')':'')+'</button>'
+             :'<button class="btn" onclick="detail('+i+')">Je m\'inscris</button>')+'</div>';
+  });
+  h+='<button class="btn out" onclick="ecranMes()">Mes inscriptions</button>'
+    +'<button class="link center" style="text-align:center;font-size:14px" onclick="ecranHotes()">Espace hôtes</button>';
+  app.innerHTML=h;haut();
+}
+
+function detail(i){
+  marque('detail',[i]);
+  var s=SOIREES[i],full=s.restantes<=0||s.attente>0,opts='';
+  for(var n=1;n<=4;n++)opts+='<option value="'+n+'">'+(n===1?'Juste moi':'Moi + '+(n-1))+'</option>';
+  app.innerHTML='<button class="link" onclick="liste()">← Toutes les soirées</button>'
+    +'<div class="card">'+themesHtml(s)+'<h1 style="font-size:28px">'+esc(s.date)+'</h1><div class="grid">'
+    +'<div class="box"><span>Horaires</span><span>'+horaires(s)+'</span></div>'
+    +'<div class="box"><span>Places</span><span>'+(full?'Complet':placesTxt(s))+'</span></div>'
+    +'<div class="box"><span>Où</span><span>'+esc(s.village)+'</span></div>'
+    +'<div class="box"><span>Hôte</span><span>'+esc(s.hote||'—')+'</span></div></div>'
+    +(s.regles.length||s.mot?'<div style="display:flex;flex-direction:column;gap:8px"><strong>Ce qu\'il faut savoir</strong>'+pillsHtml(s.regles)+(s.mot?'<p class="muted">Mot de l\'hôte : « '+esc(s.mot)+' »</p>':'')+'</div>':'')
+    +'<div class="note">L\'adresse exacte s\'affiche dès que ton inscription est confirmée.</div></div>'
+    +'<div class="card"><h2 style="font-size:22px">'+(full?'Me mettre sur liste d\'attente':'Je m\'inscris')+'</h2>'
+    +(full?'<p class="muted">La soirée est complète. Si une place se libère, on te contacte sur WhatsApp, dans l\'ordre de la liste.</p>':'')
+    +'<div class="field"><label for="prenom">Prénom</label><input id="prenom" autocomplete="given-name"></div>'
+    +'<div class="field"><label for="tel">Numéro de téléphone</label><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78"><span class="hint">Le même que sur WhatsApp, pour qu\'on puisse te retrouver.</span></div>'
+    +'<div class="field"><label for="nb">Vous serez combien ?</label><select id="nb">'+opts+'</select></div>'
+    +'<div id="msg"></div><button class="btn" id="go" onclick="valider('+i+')">'+(full?'Valider':'Valider mon inscription')+'</button></div>';
+  haut();
+}
+
+function valider(i){
+  var s=SOIREES[i],b=$('go'),m=$('msg');
+  m.innerHTML='<p class="hint">Ça peut prendre quelques secondes, ne quitte pas la page.</p>';b.disabled=true;b.textContent='Inscription en cours…';
+  run('inscrire',[s.id,$('prenom').value,$('tel').value,$('nb').value],resultat,function(e){m.innerHTML='<div class="err">'+esc(erreur(e))+'</div>';b.disabled=false;b.textContent='Réessayer';});
+}
+
+function resultat(r){
+  ECRAN='resultat';NAV++;try{history.replaceState({n:'liste',a:[]},'');}catch(e){}
+  var ok=r.statut==='Inscrit';
+  app.innerHTML='<div class="card center">'
+    +(ok?'<div class="icon" style="background:#E4EFEE"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2E6B67" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>'
+        +'<h1 style="font-size:26px">C\'est noté, '+esc(r.prenom)+' !</h1>'
+        +'<p>Tu es inscrit·e à la soirée <strong>'+esc(r.themes.join(', '))+'</strong> du '+esc(r.date.toLowerCase())+' à '+esc(r.debut)+'.</p>'
+        +(r.adresse?'<div class="addr">Adresse : '+esc(r.adresse)+(r.village?', '+esc(r.village):'')+'</div>':'')
+        +'<p class="muted">Tu retrouveras l\'adresse à tout moment dans « Mes inscriptions ».</p>'
+       :'<div class="icon" style="background:#F6EEE0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8A5A2B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>'
+        +'<h1 style="font-size:24px">Tu es sur liste d\'attente</h1>'
+        +'<p>Soirée <strong>'+esc(r.themes.join(', '))+'</strong> du '+esc(r.date.toLowerCase())+'. Tu es <strong>'+r.position+(r.position===1?'er':'e')+'</strong> dans la file.</p>'
+        +'<p class="muted">Si une place se libère, on te contacte sur WhatsApp. Tu pourras alors confirmer dans « Mes inscriptions ».</p>')
+    +'</div><button class="btn out" onclick="accueil()">← Retour aux soirées</button>';
+  haut();
+}
+
+function ecranMes(){
+  marque('ecranMes');
+  app.innerHTML='<button class="link" onclick="liste()">← Toutes les soirées</button>'
+    +'<div class="card"><h2 style="font-size:22px">Mes inscriptions</h2>'
+    +'<div class="field"><label for="tela">Ton numéro de téléphone</label><input id="tela" type="tel" inputmode="tel" placeholder="06 12 34 56 78"></div>'
+    +'<div id="msg"></div><button class="btn" id="go" onclick="chercher()">Voir mes inscriptions</button></div><div id="res" style="display:flex;flex-direction:column;gap:16px"></div>';
+  haut();
+}
+
+function chercher(){
+  var b=$('go'),m=$('msg'),res=$('res');
+  m.innerHTML='';res.innerHTML='';b.disabled=true;
+  run('mesInscriptions',[$('tela').value],function(l){
+    b.disabled=false;
+    if(!l.length){res.innerHTML='<div class="card center"><p>Aucune inscription à venir avec ce numéro.</p></div>';return;}
+    res.innerHTML=l.map(function(x){
+      var h='<div class="card"><strong>'+esc(x.soiree)+'</strong><p class="muted">'+esc(x.debut)+' · '+esc(x.village)+' · '+plur(Number(x.personnes),'personne','personnes')+'</p>';
+      if(x.annulee)h+='<div class="err">Cette soirée a été annulée.</div>';
+      if(x.statut==='Inscrit')h+='<div class="ok">Inscription confirmée</div>'+(x.adresse?'<div class="addr">Adresse : '+esc(x.adresse)+'</div>':'');
+      if(x.statut==="Liste d'attente")h+='<p><strong>Sur liste d\'attente.</strong> On te contacte si une place se libère.</p>';
+      if(x.statut==='Place proposée')h+='<div class="addr">Une place s\'est libérée pour toi ! Tu viens ?</div>'
+        +'<button class="btn" onclick="repondre(this,'+x.ligne+',true)">Oui, je confirme</button>'
+        +'<button class="btn out" onclick="repondre(this,'+x.ligne+',false)">Non, je ne peux plus</button>';
+      if(x.statut!=='Place proposée')h+='<button class="btn danger" onclick="confirmerAnnul(this,'+x.ligne+')">Annuler cette inscription</button>';
+      return h+'</div>';
+    }).join('');
+  },function(e){b.disabled=false;m.innerHTML='<div class="err">'+esc(erreur(e))+'</div>';});
+}
+
+function repondre(btn,ligne,oui){
+  btn.disabled=true;
+  run('repondreProposition',[ligne,$('tela').value,oui],function(r){
+    btn.parentNode.innerHTML=oui?'<div class="ok">C\'est confirmé, à bientôt !</div>'+(r.adresse?'<div class="addr">Adresse : '+esc(r.adresse)+'</div>':'')
+      :'<p><strong>C\'est noté.</strong> Merci d\'avoir répondu, on propose la place à la personne suivante.</p>';
+  },function(e){btn.disabled=false;toast(erreur(e));});
+}
+
+function confirmerAnnul(btn,ligne){
+  if(btn.dataset.ok!=='1'){btn.dataset.ok='1';btn.textContent='Confirmer l\'annulation';return;}
+  btn.disabled=true;btn.textContent='Annulation…';
+  run('annuler',[ligne,$('tela').value],function(){btn.parentNode.innerHTML='<p><strong>Inscription annulée.</strong> Merci d\'avoir prévenu !</p>';},function(e){btn.disabled=false;btn.textContent='Réessayer';toast(erreur(e));});
+}
+
+/* ============ ESPACE HÔTES ============ */
+function ecranHotes(msgErreur,identPre){
+  entete('Espace hôtes','Créer et gérer les soirées.');
+  if(TOKEN&&!msgErreur){app.innerHTML='<div class="load">Connexion…</div>';run('session',[TOKEN],function(m){MOI=m;apresConnexion();});return;}
+  if(!msgErreur)marque('ecranHotes');
+  app.innerHTML='<button class="link" onclick="accueil()">← Page des soirées</button>'
+    +'<div class="card"><h2 style="font-size:22px">Connexion</h2>'
+    +'<div class="field"><label for="ident">Identifiant</label><input id="ident" autocapitalize="none" autocomplete="username" value="'+esc(identPre||'')+'"></div>'
+    +'<div class="field"><label for="mdp">Mot de passe</label><input id="mdp" type="password" autocomplete="current-password"></div>'
+    +'<div id="msg">'+(msgErreur?'<div class="err">'+esc(msgErreur)+'</div>':'')+'</div>'
+    +'<button class="btn" id="go" onclick="seConnecter()">Se connecter</button>'
+    +'<p class="hint">Mot de passe oublié ? Demande à Sara de le réinitialiser.</p></div>';
+  $('mdp').addEventListener('keydown',function(ev){if(ev.key==='Enter')seConnecter();});
+  if(msgErreur){$('mdp').focus();}else haut();
+}
+
+function seConnecter(){
+  var b=$('go');if(b.disabled)return;
+  var ident=$('ident').value,mdp=$('mdp').value;
+  b.disabled=true;b.textContent='Connexion en cours…';$('msg').innerHTML='<p class="hint">Ça peut prendre quelques secondes.</p>';
+  run('connexion',[ident,mdp],function(r){setTok(r.token);MOI=r.moi;REMPLACER=true;apresConnexion();},
+    /* en cas d'erreur, on réaffiche un formulaire neuf : champs modifiables, identifiant conservé */
+    function(e){ecranHotes(erreur(e),ident);});
+}
+
+function deco(silencieux){
+  if(TOKEN&&!silencieux)run('deconnexion',[TOKEN],function(){},function(){});
+  setTok(null);MOI=null;LISTES=null;
+  if(!silencieux)accueil();else ecranHotes();
+}
+
+function apresConnexion(){
+  if(MOI.doitChanger){ecranCompte(true);return;}
+  run('listes',[TOKEN],function(l){LISTES=l;tableau();});
+}
+
+function barreHote(){
+  var d=MOI.droits;
+  return '<div class="bar"><strong style="flex:1">Bonjour '+esc(MOI.prenom||MOI.identifiant)+(MOI.admin?' · admin':'')+'</strong>'
+    +'<button class="link" onclick="deco()">Déconnexion</button></div>'
+    +'<div class="btns">'+(d.creer?'<button class="btn sm" onclick="formSoiree(null)">+ Nouvelle soirée</button>':'')
+    +'<button class="btn sm out" onclick="tableau()">Soirées</button>'
+    +(MOI.admin?'<button class="btn sm out" onclick="ecranUsers()">Utilisateurs</button>':'')
+    +'<button class="btn sm out" onclick="ecranCompte(false)">Mon compte</button>'
+    +'<button class="btn sm out" onclick="accueil()">Page publique</button></div>';
+}
+
+var BADGE={'Publiée':'b-pub','À valider':'b-val','Masquée':'b-masq','Annulée':'b-annul'};
+
+function tableau(){
+  marque('tableau');var nav=NAV;
+  app.innerHTML=barreHote()+'<div class="load">Chargement de tes soirées…</div>';
+  run('mesSoirees',[TOKEN],function(l){
+    MES=l;if(nav!==NAV)return;
+    var h=barreHote();
+    if(!l.length)h+='<div class="card center"><p>Aucune soirée à venir'+(MOI.admin?'':' pour toi')+'.</p></div>';
+    l.forEach(function(s,i){
+      h+='<div class="card"><div class="row"><span class="badge '+(BADGE[s.statut]||'b-masq')+'">'+esc(s.statut||'—')+'</span>'
+        +'<span class="places">'+s.inscrits+' / '+s.places+' inscrits'+(s.attente?' · '+s.attente+' en attente':'')+'</span></div>'
+        +themesHtml(s)+'<div class="date">'+esc(s.date)+'</div>'
+        +'<div class="info"><div>'+horaires(s)+'</div><div>'+esc(s.village)+(s.hote?' · chez '+esc(s.hote):'')+'</div>'
+        +(s.adresse?'<div>'+esc(s.adresse)+'</div>':'')+(MOI.admin&&s.creePar?'<div class="hint">Compte responsable : '+esc(s.creePar)+'</div>':'')+'</div>'
+        +'<div class="btns">'+boutonsSoiree(s,i)+'</div><div id="ins'+i+'"></div><div id="act'+i+'"></div></div>';
+    });
+    app.innerHTML=h;haut();
+  });
+}
+
+function boutonsSoiree(s,i){
+  var d=MOI.droits,b='';
+  var mods=['modDate','modThemes','modRegles','modPlaces','modAdresse','modMot'];
+  var unMod=mods.some(function(k){return d[k];}),tousMods=mods.every(function(k){return d[k];});
+  if(MOI.admin||unMod)b+='<button class="btn sm out" onclick="formSoiree('+i+')">Modifier</button>';
+  if(d.voirInscrits)b+='<button class="btn sm out" onclick="voirInscrits('+i+')">Inscrits</button>';
+  if(MOI.admin){
+    if(s.statut==='À valider')b+='<button class="btn sm" onclick="statut('+i+',\'Publiée\')">Valider et publier</button>';
+    if(s.statut==='Publiée')b+='<button class="btn sm out" onclick="statut('+i+',\'Masquée\')">Masquer</button>';
+    if(s.statut==='Masquée'||s.statut==='Annulée')b+='<button class="btn sm out" onclick="statut('+i+',\'Publiée\')">Publier</button>';
+  }
+  if((MOI.admin||d.annuler)&&s.statut!=='Annulée')b+='<button class="btn sm danger" onclick="statut('+i+',\'Annulée\',this)">Annuler la soirée</button>';
+  if(!MOI.admin&&!tousMods)b+='<button class="btn sm out" onclick="demande('+i+')">Demander une modification</button>';
+  else if(!MOI.admin&&!d.annuler)b+='<button class="btn sm out" onclick="demande('+i+')">Demander une annulation</button>';
+  return b;
+}
+
+function statut(i,st,btn){
+  var s=MES[i];
+  if(st==='Annulée'&&btn&&!deuxClics(btn,'Confirmer l\'annulation de la soirée'))return;
+  run('statutSoiree',[TOKEN,s.id,st],function(){tableau();});
+}
+
+function demande(i){
+  var z=$('act'+i);
+  z.innerHTML='<div class="field"><label>Ta demande (changement de date, annulation…)</label><textarea id="dm'+i+'" rows="3"></textarea></div>'
+    +'<button class="btn sm" onclick="envoyerDemande('+i+')">Envoyer à Sara</button>';
+}
+function envoyerDemande(i){
+  run('demanderModification',[TOKEN,MES[i].id,$('dm'+i).value],function(){$('act'+i).innerHTML='<div class="ok">Demande envoyée, Sara va te répondre.</div>';});
+}
+
+function voirInscrits(i){
+  var s=MES[i],z=$('ins'+i);
+  if(z.innerHTML){z.innerHTML='';return;}
+  var l=s.liste||[];
+  if(!l.length){z.innerHTML='<p class="muted">Personne pour l\'instant.</p>';return;}
+  var ordre={'Inscrit':0,'Place proposée':1,"Liste d'attente":2,'Décliné':3,'Annulé':4};
+  var peut=MOI.admin||MOI.droits.proposer;
+  z.innerHTML='<div class="ins">'+l.slice().sort(function(a,b){return (ordre[a.statut]-ordre[b.statut])||(a.ligne-b.ligne);}).map(function(x){
+    var a='';
+    if(peut&&x.statut==="Liste d'attente")a+='<button class="btn sm" onclick="actIns('+i+','+x.ligne+',\'proposer\')">Proposer la place</button>'
+      +'<button class="btn sm out" onclick="actIns('+i+','+x.ligne+',\'confirmer\')">Inscrire directement</button>';
+    if(peut&&x.statut==='Place proposée')a+='<button class="btn sm" onclick="actIns('+i+','+x.ligne+',\'confirmer\')">Elle/il a dit oui</button>'
+      +'<button class="btn sm out" onclick="actIns('+i+','+x.ligne+',\'decliner\')">Elle/il a dit non</button>';
+    if(MOI.admin&&(x.statut==='Inscrit'||x.statut==='Place proposée'))a+='<button class="btn sm danger" onclick="actIns('+i+','+x.ligne+',\'retirer\',this)">Retirer</button>';
+    return '<div style="display:flex;flex-direction:column;gap:6px;padding:8px 0;border-bottom:1px solid #F3EBDD">'
+      +'<div class="row"><strong>'+esc(x.prenom)+(x.n>1?' (+'+(x.n-1)+')':'')+'</strong><span class="hint">'+esc(x.statut)+'</span></div>'
+      +'<a href="'+esc(x.wa)+'" target="_blank" style="color:#2E6B67;font-weight:700">'+esc(x.tel)+' · WhatsApp</a>'
+      +(a?'<div class="btns">'+a+'</div>':'')+'<div id="wa'+x.ligne+'"></div></div>';
+  }).join('')+'</div>';
+}
+
+function actIns(i,ligne,action,btn){
+  if(action==='retirer'&&btn&&!deuxClics(btn,'Confirmer le retrait'))return;
+  run('actionInscription',[TOKEN,ligne,action],function(r){
+    if(r.wa){
+      var z=$('wa'+ligne);
+      z.innerHTML='<a class="btn wa sm" href="'+esc(r.wa)+'" target="_blank">Envoyer le message WhatsApp</a>'
+        +'<p class="hint">La place lui est réservée. Elle/il confirme dans « Mes inscriptions », ou tu valides ici quand elle/il te répond.</p>';
+      run('mesSoirees',[TOKEN],function(l){MES=l;});
+      return;
+    }
+    tableau();
+  });
+}
+
+/* ---- Formulaire soirée ---- */
+function formSoiree(i){
+  marque('formSoiree',[i]);
+  var s=i===null?null:MES[i],d=MOI.droits,adm=MOI.admin;
+  var can=function(k){return !s||adm||d[k];};
+  var dis=function(k){return can(k)?'':' disabled';};
+  var th=s?s.themes:[];
+  var h='<button class="link" onclick="tableau()">← Mes soirées</button><div class="card"><h2 style="font-size:22px">'+(s?'Modifier la soirée':'Nouvelle soirée')+'</h2>';
+  if(s&&!adm)h+='<p class="hint">Les champs grisés ne sont pas modifiables avec ton compte. Pour les changer, utilise « Demander une modification ».</p>';
+  h+='<div class="field"><label>Date</label><input id="f_date" type="date" value="'+esc(s?s.dateIso:'')+'"'+dis('modDate')+'></div>'
+    +'<div class="two"><div class="field"><label>Début</label><input id="f_debut" type="time" value="'+esc(s?s.debut:'20:00')+'"'+dis('modDate')+'></div>'
+    +'<div class="field"><label>Fin (environ)</label><input id="f_fin" type="time" value="'+esc(s?s.fin:'')+'"'+dis('modDate')+'></div></div>'
+    +'<div class="field"><label>Thèmes</label><div class="checks">'+LISTES.themes.map(function(t,k){
+      return '<label class="check"><input type="checkbox" class="f_th" value="'+esc(t)+'"'+(th.indexOf(t)>=0?' checked':'')+dis('modThemes')+'> '+esc(t)+'</label>';}).join('')+'</div></div>'
+    +'<div class="field"><label>Ville / village</label><input id="f_village" value="'+esc(s?s.village:'Noisy-sur-École')+'"'+dis('modAdresse')+'></div>'
+    +'<div class="field"><label>Adresse complète</label><input id="f_adresse" value="'+esc(s?s.adresse:'')+'"'+dis('modAdresse')+'><span class="hint">Visible uniquement par les inscrits confirmés.</span></div>'
+    +'<div class="field"><label>Prénom de l\'hôte (affiché)</label><input id="f_hote" value="'+esc(s?s.hote:(MOI.prenom||''))+'"'+dis('modAdresse')+'></div>'
+    +'<div class="field"><label>Nombre de places (sans compter l\'hôte)</label><input id="f_places" type="number" min="1" inputmode="numeric" value="'+esc(s?s.places:'')+'"'+dis('modPlaces')+'></div>';
+  LISTES.regles.forEach(function(r,k){
+    var v=s&&s.reglesParCol?s.reglesParCol[r.nom]:'';
+    h+='<div class="field"><label>'+esc(r.nom)+'</label><select class="f_rg" data-nom="'+esc(r.nom)+'"'+dis('modRegles')+'><option value="">—</option>'
+      +r.options.map(function(o){return '<option'+(o===v?' selected':'')+'>'+esc(o)+'</option>';}).join('')+'</select></div>';
+  });
+  h+='<div class="field"><label>Mot de l\'hôte</label><textarea id="f_mot" rows="3"'+dis('modMot')+'>'+esc(s?s.mot:'')+'</textarea><span class="hint">Ex. : débutants bienvenus, chacun apporte un petit truc à grignoter…</span></div>';
+  if(adm)h+='<div class="field"><label>Compte responsable</label><select id="f_proprio">'+LISTES.comptes.map(function(c){
+      var sel=s?(c.identifiant===s.creePar):(c.identifiant===MOI.identifiant);
+      return '<option value="'+esc(c.identifiant)+'"'+(sel?' selected':'')+'>'+esc(c.prenom||c.identifiant)+' ('+esc(c.identifiant)+')</option>';}).join('')+'</select>'
+      +'<span class="hint">La personne qui pourra gérer cette soirée depuis son compte.</span></div>';
+  if(!s&&!adm&&!d.publier)h+='<div class="note">Ta soirée sera visible sur le site après validation par Sara.</div>';
+  h+='<div id="msg"></div><button class="btn" id="go" onclick="enregistrer('+(i===null?'null':i)+')">'+(s?'Enregistrer':'Créer la soirée')+'</button></div>';
+  app.innerHTML=h;haut();
+}
+
+function enregistrer(i){
+  var s=i===null?null:MES[i],b=$('go');
+  var regles={};document.querySelectorAll('.f_rg').forEach(function(x){regles[x.dataset.nom]=x.value;});
+  var data={id:s?s.id:null,dateIso:$('f_date').value,debut:$('f_debut').value,fin:$('f_fin').value,
+    themes:[].slice.call(document.querySelectorAll('.f_th:checked')).map(function(x){return x.value;}),
+    village:$('f_village').value,adresse:$('f_adresse').value,hote:$('f_hote').value,places:$('f_places').value,
+    mot:$('f_mot').value,regles:regles};
+  if(MOI.admin&&$('f_proprio'))data.creePar=$('f_proprio').value;
+  b.disabled=true;b.textContent='Enregistrement en cours…';$('msg').innerHTML='<p class="hint">Ça peut prendre quelques secondes.</p>';
+  run('enregistrerSoiree',[TOKEN,data],function(r){
+    app.innerHTML=barreHote()+'<div class="card center"><div class="ok">'+(s?'Soirée enregistrée.':(r.statut==='Publiée'?'Soirée créée et publiée !':'Soirée créée. Elle sera publiée après validation de Sara.'))+'</div></div>';
+    setTimeout(tableau,1200);
+  },function(e){b.disabled=false;b.textContent=s?'Enregistrer':'Créer la soirée';$('msg').innerHTML='<div class="err">'+esc(erreur(e))+'</div>';});
+}
+
+/* ---- Mon compte ---- */
+function ecranCompte(force){
+  if(!force)marque('ecranCompte',[false]);
+  app.innerHTML=(force?'':barreHote())+'<div class="card"><h2 style="font-size:22px">'+(force?'Choisis ton mot de passe':'Changer mon mot de passe')+'</h2>'
+    +(force?'<p class="muted">Pour ta première connexion, remplace le mot de passe provisoire par le tien.</p>':'')
+    +'<div class="field"><label>Mot de passe actuel</label><input id="m1" type="password" autocomplete="current-password"></div>'
+    +'<div class="field"><label>Nouveau mot de passe (6 caractères min.)</label><input id="m2" type="password" autocomplete="new-password"></div>'
+    +'<div class="field"><label>Confirme le nouveau mot de passe</label><input id="m3" type="password" autocomplete="new-password"></div>'
+    +'<div id="msg"></div><button class="btn" id="go" onclick="changerMdp('+(force?'true':'false')+')">Enregistrer</button></div>';
+  haut();
+}
+function changerMdp(force){
+  if($('m2').value!==$('m3').value){$('msg').innerHTML='<div class="err">Les deux nouveaux mots de passe ne sont pas identiques.</div>';return;}
+  $('go').disabled=true;
+  run('changerMotDePasse',[TOKEN,$('m1').value,$('m2').value],function(){
+    MOI.doitChanger=false;
+    if(force)apresConnexion();else $('msg').innerHTML='<div class="ok">Mot de passe modifié.</div>';
+    if(!force)$('go').disabled=false;
+  },function(e){$('go').disabled=false;$('msg').innerHTML='<div class="err">'+esc(erreur(e))+'</div>';});
+}
+
+/* ---- Utilisateurs (admin) ---- */
+function ecranUsers(){
+  marque('ecranUsers');var nav=NAV;
+  app.innerHTML=barreHote()+'<div class="load">Chargement…</div>';
+  run('listeUtilisateurs',[TOKEN],function(r){
+    USERS=r;if(nav!==NAV)return;
+    var h=barreHote()+'<button class="btn" onclick="formUser(null)">+ Nouvel utilisateur</button>';
+    r.liste.forEach(function(u,i){
+      var nb=r.droits.filter(function(d){return u.droits[d.cle];}).length;
+      h+='<div class="card"><div class="row"><strong>'+esc(u.prenom||u.identifiant)+'</strong>'
+        +'<span class="badge '+(u.actif?'b-pub':'b-masq')+'">'+(u.admin?'Admin':(u.actif?'Actif':'Désactivé'))+'</span></div>'
+        +'<p class="muted">Identifiant : '+esc(u.identifiant)+(u.tel?' · '+esc(u.tel):'')+'</p>'
+        +(u.admin?'':'<p class="hint">'+nb+' droit(s) sur '+r.droits.length+'</p>')
+        +'<div class="btns"><button class="btn sm out" onclick="formUser('+i+')">Modifier</button>'
+        +'<button class="btn sm out" onclick="reinit('+i+')">Nouveau mot de passe</button></div><div id="ru'+i+'"></div></div>';
+    });
+    app.innerHTML=h;haut();
+  });
+}
+
+function formUser(i){
+  marque('formUser',[i]);
+  var u=i===null?null:USERS.liste[i];
+  var h=barreHote()+'<div class="card"><h2 style="font-size:22px">'+(u?'Modifier '+esc(u.prenom||u.identifiant):'Nouvel utilisateur')+'</h2>'
+    +'<div class="field"><label>Identifiant de connexion</label><input id="u_id" autocapitalize="none" value="'+esc(u?u.identifiant:'')+'"'+(u?' disabled':'')+'><span class="hint">Minuscules, sans espace ni accent. Ex. : martine.d</span></div>'
+    +'<div class="field"><label>Prénom</label><input id="u_prenom" value="'+esc(u?u.prenom:'')+'"></div>'
+    +'<div class="field"><label>Téléphone</label><input id="u_tel" type="tel" value="'+esc(u?u.tel:'')+'"></div>'
+    +(u?'':'<div class="field"><label>Mot de passe provisoire</label><input id="u_mdp" value=""><span class="hint">La personne devra le changer à sa première connexion.</span></div>')
+    +'<div class="checks"><label class="check"><input type="checkbox" id="u_actif"'+(!u||u.actif?' checked':'')+'> Compte actif</label>'
+    +'<label class="check"><input type="checkbox" id="u_admin"'+(u&&u.admin?' checked':'')+'> Administratrice / administrateur (tous les droits)</label></div>'
+    +'<div class="field"><label>Droits</label><div class="checks">'+USERS.droits.map(function(d){
+      return '<label class="check"><input type="checkbox" class="u_dr" value="'+d.cle+'"'+(u&&u.droits[d.cle]?' checked':'')+'> '+esc(d.nom)+'</label>';}).join('')+'</div></div>'
+    +'<div id="msg"></div><button class="btn" id="go" onclick="enregUser('+(i===null?'null':i)+')">Enregistrer</button></div>';
+  app.innerHTML=h;haut();
+}
+
+function enregUser(i){
+  var u=i===null?null:USERS.liste[i],dr={};
+  document.querySelectorAll('.u_dr').forEach(function(x){dr[x.value]=x.checked;});
+  var data={nouveau:!u,identifiant:u?u.identifiant:$('u_id').value,prenom:$('u_prenom').value,tel:$('u_tel').value,
+    mdp:u?'':$('u_mdp').value,actif:$('u_actif').checked,admin:$('u_admin').checked,droits:dr};
+  $('go').disabled=true;$('msg').innerHTML='';
+  run('enregistrerUtilisateur',[TOKEN,data],function(){ecranUsers();},function(e){$('go').disabled=false;$('msg').innerHTML='<div class="err">'+esc(erreur(e))+'</div>';});
+}
+
+function reinit(i){
+  var z=$('ru'+i);
+  z.innerHTML='<div class="field"><label>Nouveau mot de passe provisoire</label><input id="rp'+i+'"></div>'
+    +'<button class="btn sm" onclick="reinitOk('+i+')">Valider</button>';
+}
+function reinitOk(i){
+  run('reinitialiserMdp',[TOKEN,USERS.liste[i].identifiant,$('rp'+i).value],function(){$('ru'+i).innerHTML='<div class="ok">C\'est fait. Elle/il devra le changer à la prochaine connexion.</div>';});
+}
+
+/* ============ Démarrage ============ */
+try{history.replaceState({n:'liste',a:[]},'');}catch(e){}
+accueil();
+</script>
+</body>
+</html>
