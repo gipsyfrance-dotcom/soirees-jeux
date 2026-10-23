@@ -1,0 +1,17 @@
+{
+  "id": "/soirees-jeux/app",
+  "name": "Soirées jeux – Noisy & alentours",
+  "short_name": "Soirées jeux",
+  "description": "Les prochaines soirées jeux autour de Noisy-sur-École : inscription en 2 minutes.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF4E6",
+  "theme_color": "#1D3B5C",
+  "icons": [
+    { "src": "icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

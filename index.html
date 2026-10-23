@@ -6,6 +6,8 @@
 <title>Soirées jeux – Noisy &amp; alentours</title>
 <meta name="description" content="Les prochaines soirées jeux autour de Noisy-sur-École : choisis une soirée et inscris-toi en 2 minutes.">
 <meta name="theme-color" content="#1D3B5C">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icone-192.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gipsyfrance-dotcom.github.io/soirees-jeux/">
 <meta property="og:title" content="Soirées jeux – Noisy &amp; alentours">
@@ -193,6 +195,7 @@ function liste(){
       +'<div class="date">'+esc(s.date)+'</div>'
       +'<div class="info"><div>'+horaires(s)+'</div><div>'+esc(s.village)+(s.hote?' · chez '+esc(s.hote):'')+'</div></div>'
       +pillsHtml(s.regles)
+      +quiVient(s)
       +(full?'<button class="btn out" onclick="detail('+i+')">Liste d\'attente'+(s.attente?' ('+plur(s.attente,'personne','personnes')+')':'')+'</button>'
              :'<button class="btn" onclick="detail('+i+')">Je m\'inscris</button>')+'</div>';
   });
@@ -273,6 +276,7 @@ function chercher(){
     if(!l.length){res.innerHTML='<div class="card center"><p>Aucune inscription à venir avec ce numéro.</p></div>';return;}
     res.innerHTML=l.map(function(x){
       var h='<div class="card"><strong>'+esc(x.soiree)+'</strong><p class="muted">'+esc(x.debut)+' · '+esc(x.village)+' · '+plur(Number(x.personnes),'personne','personnes')+'</p>';
+      if(!x.annulee&&x.qui)h+=quiVient(x);
       if(x.annulee)h+='<div class="err">Cette soirée a été annulée.</div>';
       if(x.statut==='Inscrit')h+='<div class="ok">Inscription confirmée</div>'+(x.adresse?'<div class="addr">Adresse : '+esc(x.adresse)+'</div>':'');
       if(x.statut==="Liste d'attente")h+='<p><strong>Sur liste d\'attente.</strong> On te contacte si une place se libère.</p>';
@@ -560,6 +564,7 @@ function reinitOk(i){
 /* ============ Démarrage ============ */
 try{history.replaceState({n:'liste',a:[]},'');}catch(e){}
 accueil();
+if('serviceWorker' in navigator){try{navigator.serviceWorker.register('sw.js');}catch(e){}}
 </script>
 </body>
 </html>
