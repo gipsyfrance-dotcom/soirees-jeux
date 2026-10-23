@@ -68,6 +68,13 @@
   .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
   p{margin:0;line-height:1.5}
   #toast{display:none;position:fixed;left:16px;right:16px;bottom:16px;max-width:528px;margin:0 auto;background:#1D3B5C;color:#fff;padding:14px 16px;border-radius:12px;font-weight:700;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+  .qui{display:flex;flex-direction:column;gap:10px}
+  .qui-titre{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .qui-titre span{font-size:14px;font-weight:700;color:#22524F}
+  .gens{display:flex;flex-wrap:wrap;gap:8px}
+  .gens span{display:inline-flex;align-items:center;gap:7px;background:#FFFFFF;border:1px solid #E6D7BD;border-radius:999px;padding:4px 12px 4px 4px;font-size:15px;font-weight:700;color:#1D3B5C}
+  .gens i{font-style:normal;width:26px;height:26px;border-radius:999px;background:#E4EFEE;color:#22524F;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+  .gens em{font-style:normal;font-weight:600;color:#5B6B7D;font-size:14px}
 </style>
 </head>
 <body>
@@ -194,6 +201,16 @@ function liste(){
   app.innerHTML=h;haut();
 }
 
+/* Bloc « Qui vient ? » : prénoms des inscrits confirmés + nombre en liste d'attente */
+function quiVient(s){
+  var l=s.qui||[],tot=0;l.forEach(function(x){tot+=x.n;});
+  var h='<div class="qui"><div class="qui-titre"><strong>Qui vient ?</strong><span>'+(tot?plur(tot,'personne inscrite','personnes inscrites'):'')+'</span></div>';
+  if(!l.length)h+='<p class="muted">Personne pour l\'instant : tu peux être le premier ou la première !</p>';
+  else h+='<div class="gens">'+l.map(function(x){var p=String(x.p||'?');return '<span><i>'+esc(p.charAt(0).toUpperCase())+'</i>'+esc(p)+(x.n>1?' <em>+'+(x.n-1)+'</em>':'')+'</span>';}).join('')+'</div>';
+  if(s.attente>0)h+='<p class="muted">Liste d\'attente : '+plur(s.attente,'personne','personnes')+'</p>';
+  return h+'</div>';
+}
+
 function detail(i){
   marque('detail',[i]);
   var s=SOIREES[i],full=s.restantes<=0||s.attente>0,opts='';
@@ -205,6 +222,7 @@ function detail(i){
     +'<div class="box"><span>Où</span><span>'+esc(s.village)+'</span></div>'
     +'<div class="box"><span>Hôte</span><span>'+esc(s.hote||'—')+'</span></div></div>'
     +(s.regles.length||s.mot?'<div style="display:flex;flex-direction:column;gap:8px"><strong>Ce qu\'il faut savoir</strong>'+pillsHtml(s.regles)+(s.mot?'<p class="muted">Mot de l\'hôte : « '+esc(s.mot)+' »</p>':'')+'</div>':'')
+    +quiVient(s)
     +'<div class="note">L\'adresse exacte s\'affiche dès que ton inscription est confirmée.</div></div>'
     +'<div class="card"><h2 style="font-size:22px">'+(full?'Me mettre sur liste d\'attente':'Je m\'inscris')+'</h2>'
     +(full?'<p class="muted">La soirée est complète. Si une place se libère, on te contacte sur WhatsApp, dans l\'ordre de la liste.</p>':'')
